@@ -11,7 +11,7 @@ export default function StoreFrontLayout({ children }: PropsWithChildren) {
   return (
     <>
       <Header />
-      <main>{children}</main>
+      <main className="container px-4 sm:px-[30px] py-5">{children}</main>
     </>
   );
 }

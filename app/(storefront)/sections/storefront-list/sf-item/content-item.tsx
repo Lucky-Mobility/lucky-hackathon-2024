@@ -11,7 +11,7 @@ import { cn } from "@/lib/utils";
 
 export const ContentItem = (props: TContentItem) => {
   return (
-    <div className="w-[148px] h-[262px] rounded bg-white shadow-[0_0_6px_0px_rgba(0,0,0,0.12)] overflow-hidden">
+    <div className="w-[148px] h-[262px] rounded bg-white shadow-[0_0_6px_0px_rgba(0,0,0,0.12)] overflow-hidden flex-shrink-0">
       {props.type === EContentTypes.Product ? (
         <ProductItem {...props} />
       ) : (

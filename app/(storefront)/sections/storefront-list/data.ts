@@ -4,6 +4,7 @@ import { SfItemProps } from "./sf-item";
 export const storefrontList: Array<SfItemProps> = [
   {
     name: "Summertime Favorites",
+    slug: "summertime-favorites",
     contents: [
       {
         type: EContentTypes.SocialContent,
@@ -86,6 +87,7 @@ export const storefrontList: Array<SfItemProps> = [
   },
   {
     name: "Ultimate Glowing Skin Tutorial",
+    slug: "ultimate-glowing-skin-tutorial",
     contents: [
       {
         type: EContentTypes.SocialContent,

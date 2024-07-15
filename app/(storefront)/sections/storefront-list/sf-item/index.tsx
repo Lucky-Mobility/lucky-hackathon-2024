@@ -15,12 +15,14 @@ export type SfItemProps = {
   name: string;
   contents: Array<TContentItem>;
   viewMode?: TViewMode;
+  slug: string;
 };
 
 export const SfItem = ({
   name,
   contents,
   viewMode = "carousel",
+  slug,
 }: SfItemProps) => {
   if (viewMode === "grid") {
     return null;
@@ -31,7 +33,10 @@ export const SfItem = ({
       <div className="flex justify-between items-center mb-6 text-black dark:text-white">
         <p className="m-0 font-bold text-base">{name}</p>
         <div className="actions flex items-center">
-          <Link href={`#${name}`} className="text-xs font-bold underline">
+          <Link
+            href={`/storefront/${slug}`}
+            className="text-xs font-bold underline"
+          >
             View all
           </Link>
           <svg
