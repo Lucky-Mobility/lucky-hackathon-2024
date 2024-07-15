@@ -1,7 +1,7 @@
 import React from "react";
-import { storefrontList } from "../../sections/storefront-list/data";
-import { notFound } from "next/navigation";
 import Link from "next/link";
+import { notFound } from "next/navigation";
+import { storefrontList } from "../../sections/storefront-list/data";
 import { ContentItem } from "../../sections/storefront-list/sf-item/content-item";
 
 interface TPageProps {

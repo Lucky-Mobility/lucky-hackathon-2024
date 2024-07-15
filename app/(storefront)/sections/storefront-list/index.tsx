@@ -1,11 +1,13 @@
 "use client";
 
-import { Fragment, ReactNode, useMemo, useState } from "react";
+import { Fragment, ReactNode, useState } from "react";
+import { LayoutGrid } from "lucide-react";
+
+import { cn } from "@/lib/utils";
+
 import { storefrontList } from "./data";
 import { SfItem } from "./sf-item";
 import { TViewMode } from "./types";
-import { LayoutGrid } from "lucide-react";
-import { cn } from "@/lib/utils";
 
 export const StorefrontList = () => {
   const [viewMode, setVieMode] = useState<TViewMode>("carousel");

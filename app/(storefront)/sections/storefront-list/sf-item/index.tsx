@@ -1,12 +1,7 @@
-import React, { Fragment } from "react";
-import {
-  EContentTypes,
-  IProduct,
-  ISocialContent,
-  TContentItem,
-} from "../../types";
+import React from "react";
 import Link from "next/link";
-import { TViewMode } from "../types";
+
+import { cn } from "@/lib/utils";
 import {
   Carousel,
   CarouselContent,
@@ -14,9 +9,15 @@ import {
   CarouselPrevious,
   CarouselNext,
 } from "@/components/ui/carousel";
+
+import {
+  EContentTypes,
+  IProduct,
+  ISocialContent,
+  TContentItem,
+} from "../../types";
+import { TViewMode } from "../types";
 import { ContentItem } from "./content-item";
-import Image from "next/image";
-import { cn } from "@/lib/utils";
 
 export type SfItemProps = {
   name: string;
