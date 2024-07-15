@@ -4,12 +4,11 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { ContentItem } from "../../sections/storefront-list/sf-item/content-item";
 
-interface PageProps {
-  children: React.ReactNode;
+interface TPageProps {
   params: { slug: string };
 }
 
-const page = ({ params }: PageProps) => {
+const page = ({ params }: TPageProps) => {
   const { slug } = params;
   const storefrontItem = storefrontList.find((item) => item.slug === slug);
 
