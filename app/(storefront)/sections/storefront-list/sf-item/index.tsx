@@ -68,11 +68,13 @@ export const SfItem = ({
           variant="ghost"
           iconClassName="text-black h-8 w-8"
           className="hidden sm:block"
+          color="black"
         />
         <CarouselNext
           variant="ghost"
           iconClassName="text-black h-8 w-8"
           className="hidden sm:block"
+          color="black"
         />
       </Carousel>
     </div>
