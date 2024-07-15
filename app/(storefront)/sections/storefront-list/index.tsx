@@ -5,6 +5,7 @@ import { storefrontList } from "./data";
 import { SfItem } from "./sf-item";
 import { TViewMode } from "./types";
 import { LayoutGrid } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 export const StorefrontList = () => {
   const [viewMode, setVieMode] = useState<TViewMode>("carousel");
@@ -26,13 +27,20 @@ export const StorefrontList = () => {
         </div>
       </div>
       <div className="w-full h-px mt-8 mb-6 bg-[#CDCDCD]" />
-      <div className="flex flex-col gap-7">
+      <div
+        className={cn(
+          "flex",
+          viewMode === "carousel"
+            ? "flex-col gap-7"
+            : "gap-4 items-center flex-wrap"
+        )}
+      >
         {storefrontList
           .filter((i) => i.contents.length)
           .map((sfItemProps, idx) => (
             <Fragment key={idx}>
               <SfItem {...sfItemProps} viewMode={viewMode} />
-              {idx !== storefrontList.length - 1 ? (
+              {viewMode === "carousel" && idx !== storefrontList.length - 1 ? (
                 <div className="w-full h-px bg-[#CDCDCD] my-7" />
               ) : null}
             </Fragment>

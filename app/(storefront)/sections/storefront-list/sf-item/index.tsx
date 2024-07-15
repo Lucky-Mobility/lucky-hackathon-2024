@@ -1,5 +1,10 @@
-import React from "react";
-import { TContentItem } from "../../types";
+import React, { Fragment } from "react";
+import {
+  EContentTypes,
+  IProduct,
+  ISocialContent,
+  TContentItem,
+} from "../../types";
 import Link from "next/link";
 import { TViewMode } from "../types";
 import {
@@ -10,6 +15,8 @@ import {
   CarouselNext,
 } from "@/components/ui/carousel";
 import { ContentItem } from "./content-item";
+import Image from "next/image";
+import { cn } from "@/lib/utils";
 
 export type SfItemProps = {
   name: string;
@@ -18,14 +25,10 @@ export type SfItemProps = {
   slug: string;
 };
 
-export const SfItem = ({
-  name,
-  contents,
-  viewMode = "carousel",
-  slug,
-}: SfItemProps) => {
+export const SfItem = (props: SfItemProps) => {
+  const { name, contents, viewMode = "carousel", slug } = props;
   if (viewMode === "grid") {
-    return null;
+    return <GridItem {...props} />;
   }
 
   return (
@@ -78,5 +81,53 @@ export const SfItem = ({
         />
       </Carousel>
     </div>
+  );
+};
+
+const GridItem = ({ name, contents, slug }: SfItemProps) => {
+  const threeFirstProds = contents.slice(0, 3);
+
+  const remainingProdLength = contents.length - threeFirstProds.length;
+
+  return (
+    <Link href={`/storefront/${slug}`}>
+      <div className="w-[332px] h-[205px] flex-shrink-0 rounded bg-white flex flex-col items-center justify-center gap-4 shadow-[0_0_16px_0px_rgba(0,0,0,0.12)]">
+        <div className="flex justify-between items-center">
+          {threeFirstProds.map((c, index) => {
+            const imageUrl =
+              c.type === EContentTypes.Product
+                ? (c as IProduct).imageUrl
+                : (c as ISocialContent).thumbnailUrl;
+            const isLatestItem = index === threeFirstProds.length - 1;
+            return (
+              <div
+                key={index}
+                className={cn(
+                  "w-[93px] h-[88px] rounded-md grid place-items-center relative overflow-hidden",
+                  isLatestItem &&
+                    remainingProdLength &&
+                    "before:content-[''] before:w-full before:h-full before:absolute before:left-0 before:bg-gradient-to-r before:from-gray-900 before:to-gray-900 before:opacity-60 before:bg-cover before:bg-center before:bg-no-repeat"
+                )}
+                style={{
+                  backgroundImage: `url(${imageUrl})`,
+                }}
+              >
+                {isLatestItem ? (
+                  <span className="text-white text-lg font-bold z-10">
+                    {remainingProdLength}+
+                  </span>
+                ) : null}
+              </div>
+            );
+          })}
+        </div>
+        <p className="w-full text-center text-xl text-black font-bold">
+          {name}
+        </p>
+        <p className="w-full text-center text-xs text-black">{`${
+          contents.length
+        } product${contents.length > 1 ? "s" : ""}`}</p>
+      </div>
+    </Link>
   );
 };

@@ -1,13 +1,14 @@
 import Image from "next/image";
+import Link from "next/link";
+
+import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 import {
   EContentTypes,
   IProduct,
   ISocialContent,
   TContentItem,
 } from "../../types";
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
-import { cn } from "@/lib/utils";
 
 export const ContentItem = (props: TContentItem) => {
   return (
