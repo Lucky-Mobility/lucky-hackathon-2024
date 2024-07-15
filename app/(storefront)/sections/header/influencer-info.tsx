@@ -35,7 +35,7 @@ export const InfluencerInfo = () => {
           <AvatarImage src="https://github.com/shadcn.png" />
           <AvatarFallback>CN</AvatarFallback>
         </Avatar>
-        <div className="hidden sm:block">
+        <div>
           <p className="text-white text-base font-bold">
             AleJayOfficial’s favorites
           </p>
@@ -78,7 +78,7 @@ export const InfluencerInfo = () => {
             </svg>
             Earns Commission
           </p>
-          <div className="social-networks flex mt-1.5 sm:hidden sm:gap-2 sm:items-center">
+          <div className="social-networks flex mt-1.5 sm:hidden gap-2 sm:items-center">
             {socialNetworkIcons}
           </div>
         </div>
