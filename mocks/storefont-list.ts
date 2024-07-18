@@ -1,7 +1,7 @@
 export const STORE_FRONT_LIST = [
   {
     title: 'Summertime Favorites',
-    index: 0,
+    index: 1,
     link: 'http://link.com',
     totalProducts: 10,
     totalClicks: 150000,
@@ -21,7 +21,7 @@ export const STORE_FRONT_LIST = [
   },
   {
     title: 'Glowing Skin Tutorial',
-    index: 1,
+    index: 2,
     link: 'http://link.com',
     totalProducts: 21,
     totalClicks: 58300,
