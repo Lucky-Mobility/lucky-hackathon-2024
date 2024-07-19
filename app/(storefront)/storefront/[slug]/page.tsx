@@ -1,22 +1,26 @@
 import React from "react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { storefrontList } from "../../sections/storefront-list/data";
+import slugify from "slugify";
+//
 import { ContentItem } from "../../sections/storefront-list/sf-item/content-item";
+import { getData } from "../../ssr-apis";
 
 interface TPageProps {
   params: { slug: string };
 }
 
-const page = ({ params }: TPageProps) => {
+const page = async ({ params }: TPageProps) => {
   const { slug } = params;
-  const storefrontItem = storefrontList.find((item) => item.slug === slug);
+  const storefrontItem = (await getData())?.find(
+    (i) => slugify(i.listName) === slug
+  );
 
   if (!storefrontItem) {
     return notFound();
   }
 
-  const { name, contents } = storefrontItem;
+  const { listName, products } = storefrontItem;
 
   return (
     <div className="flex flex-col gap-4 w-full">
@@ -38,9 +42,9 @@ const page = ({ params }: TPageProps) => {
         </svg>
         Storefront
       </Link>
-      <p className="m-0 text-lg font-bold text-black">{name}</p>
+      <p className="m-0 text-lg font-bold text-black">{listName}</p>
       <div className="flex gap-5 max-w-full flex-wrap">
-        {contents.map((contentProps, index) => (
+        {products.map((contentProps, index) => (
           <ContentItem key={index} {...contentProps} />
         ))}
       </div>
