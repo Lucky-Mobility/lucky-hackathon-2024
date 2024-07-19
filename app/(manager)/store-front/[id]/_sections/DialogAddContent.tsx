@@ -41,6 +41,7 @@ const DialogAddContent = ({ open, onClose }: PropsDialogAddContent) => {
         <DialogHeader>
           <DialogTitle>Add content</DialogTitle>
           <DialogDescription className='hidden'>
+            {/* eslint-disable-next-line react/no-unescaped-entities */}
             Make changes to your profile here. Click save when you're done.
           </DialogDescription>
         </DialogHeader>
